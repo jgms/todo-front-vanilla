@@ -3,7 +3,7 @@ const formulario = document.querySelector("form");
 const inputTexto = document.querySelector('form input[type="text"]');
 
 //carga inicial de los datos
-fetch("http://localhost:4000/tareas")
+fetch("https://api-todo-postgres.onrender.com/tareas")
 .then(respuesta => respuesta.json())
 .then(tareas => {
     tareas.sort((a,b) => a.id - b.id).forEach(({id,tarea,terminada}) => {
@@ -19,7 +19,7 @@ formulario.addEventListener("submit", evento => {
         
         let tarea = inputTexto.value.trim();
 
-        fetch("http://localhost:4000/tareas/nueva",{
+        fetch("https://api-todo-postgres.onrender.com/tareas/nueva",{
             method : "POST",
             body : JSON.stringify({tarea}),
             headers : {
